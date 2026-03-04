@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eastern Lake County Lab Walks</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- DEPLOY MARKER: 2026-02-26-TEST-777 -->
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="#top">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Eastern Lake County <strong>Dog Walks</strong></span>
+      </a>
+
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <p class="chips">
+          <span class="chip">Labradors first</span>
+          <span class="chip">Eastern Lake County</span>
+          <span class="chip">Certified & Insured</span>
+        </p>
+
+        <h1>Reliable walks, happy pups, total peace of mind.</h1>
+        <p class="lead">Daily dog walks, puppy visits, overnight sitting, pet taxi—small groups + GPS tracking.</p>
+
+        <a class="btn" href="#contact">Request a Meet & Greet</a>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <h2>Services</h2>
+        <div class="grid">
+          <article class="card"><h3>Daily Dog Walks</h3><p>Solo or small group options.</p></article>
+          <article class="card"><h3>Puppy Visits</h3><p>Routine support, potty breaks, play.</p></article>
+          <article class="card"><h3>Overnight Sitting</h3><p>In-home care while you’re away.</p></article>
+          <article class="card"><h3>Pet Taxi</h3><p>Vet, groomer, daycare transport.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- #5 CONTACT FORM PARAMETERS -->
+    <section id="contact" class="section dark">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="muted">Fill this out and it will open an email draft (no backend needed
+     <form id="contactForm" class="form" name="contact" method="POST" data-netlify="true" action="/">
+  <input type="hidden" name="form-name" value="contact" />
+          <div class="row">
+            <label>
+              Your name
+              <input name="name" required />
+            </label>
+
+            <label>
+              Email or phone
+              <input name="reply" required placeholder="you@email.com or (555) 555-5555" />
+            </label>
+          </div>
+
+          <div class="row">
+            <label>
+              Service area (default: Eastern Lake County)
+              <input name="area" value="Eastern Lake County" />
+            </label>
+
+            <label>
+              Preferred contact method
+              <select name="pref">
+                <option>Email</option>
+                <option>Text</option>
+                <option>Phone call</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="row">
+            <label>
+  Dog breed
+  <select name="breed" required>
+
+    <optgroup label="Medium / Large (40–70 lbs)">
+      <option>Labrador Retriever</option>
+      <option>Golden Retriever</option>
+      <option>Standard Poodle</option>
+      <option>Border Collie</option>
+      <option>Australian Shepherd</option>
+      <option>Siberian Husky</option>
+      <option>Boxer</option>
+      <option>English Springer Spaniel</option>
+      <option>Brittany</option>
+      <option>Vizsla</option>
+      <option>Weimaraner</option>
+      <option>Dalmatian</option>
+      <option>German Shorthaired Pointer</option>
+      <option>Collie</option>
+      <option>Belgian Malinois</option>
+      <option>Australian Cattle Dog</option>
+      <option>Bernedoodle (Standard)</option>
+      <option>Goldendoodle (Standard)</option>
+      <option>Labradoodle (Standard)</option>
+    </optgroup>
+
+    <optgroup label="Large (70–100 lbs)">
+      <option>German Shepherd</option>
+      <option>Doberman Pinscher</option>
+      <option>Rottweiler</option>
+      <option>Chesapeake Bay Retriever</option>
+      <option>Akita</option>
+      <option>Rhodesian Ridgeback</option>
+      <option>Giant Schnauzer</option>
+      <option>Cane Corso</option>
+      <option>Belgian Tervuren</option>
+      <option>Old English Sheepdog</option>
+      <option>Bloodhound</option>
+      <option>Alaskan Malamute</option>
+      <option>American Bulldog</option>
+      <option>Bullmastiff</option>
+    </optgroup>
+    <optgroup label="Common Mixes">
+      <option>Shepherd Mix</option>
+      <option>Lab Mix</option>
+      <option>Retriever Mix</option>
+      <option>Husky Mix</option>
+      <option>Pit Bull Mix</option>
+      <option>Mixed Breed (Large)</option>
+    </optgroup>
+
+    <option>Other</option>
+
+  </select>
+</label>
+            <label>
+              Services needed
+              <select name="service">
+                <option>Daily dog walks</option>
+                <option>Puppy visits</option>
+                <option>Overnight sitting</option>
+                <option>Pet taxi</option>
+                <option>Drop-in visit</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+          </div>
+
+ <!-- Temperament -->
+<div class="row">
+  <label>
+    Temperament
+    <select name="temperament" required>
+      <option selected>Friendly / easygoing</option>
+      <option>Shy / nervous</option>
+      <option>High energy</option>
+      <option>Protective / territorial</option>
+      <option>Independent / stubborn</option>
+      <option>Working / very driven</option>
+      <option>Senior / low energy</option>
+      <option>Puppy / in training</option>
+      <option>Other / not sure</option>
+    </select>
+  </label>
+
+  <label>
+    Reactivity or aggression concerns?
+    <select name="reactive" required>
+      <option selected>No</option>
+      <option>Yes</option>
+    </select>
+  </label>
+</div>
+
+<!-- Multi-dog household -->
+<div class="row">
+  <label>
+    Multi-dog household?
+    <select name="multidog" required>
+      <option selected>No</option>
+      <option>Yes</option>
+    </select>
+  </label>
+
+  <label>
+    How many dogs?
+    <input name="numDogs" type="number" min="1" max="10" value="1" />
+  </label>
+</div>         <label>
+  Notes / schedule / behavior details
+  <textarea name="notes" rows="5" required placeholder="Days/times, temperament, behavior notes, leash style, address (optional), anything important."></textarea>
+</label>
+          
+
+          <label class="check">
+            <input type="checkbox" name="gps" checked />
+            Include GPS tracking updates
+          </label>
+
+          <button class="btn" type="submit">Send Request</button>
+          </form>
+          <p class="muted small">Tip: This is safe + simple. Later we can connect it to a real backend.</p>
+      </div>
+    </section>
+  </main>
+
+<!-- <script src="app.js"></script> -->
+</body>
+</html>
