@@ -1,1 +1,1 @@
-// Netlify Forms: no JS needed for submission.  
+  // GitHub Pages site: no form JS is currently used here.

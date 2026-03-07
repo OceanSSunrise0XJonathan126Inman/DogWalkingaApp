@@ -93,6 +93,31 @@ h1{margin:0 0 10px; font-size:clamp(30px, 4.3vw, 52px); line-height:1.05;}
   background:rgba(57,255,20,.08);
 }
 
+.hero-services{
+  position: absolute;
+  left: 24px;
+  z-index: 2;
+  max-width: 320px;
+}
+
+.hero-services-left{
+  bottom: -300px;
+}
+
+.hero-services-right{
+  bottom: -400px;
+  right: auto;
+}
+
+.hero-svc{
+  margin-bottom: 12px;
+}
+
+.hero-services-right .hero-svc,
+.hero-services-left .hero-svc{
+  text-align: left;
+}
+
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
   padding:11px 14px;
