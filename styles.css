@@ -243,3 +243,85 @@ input:focus, select:focus, textarea:focus{
     color: #0a0f14;
   }
 }
+.mobile-cta,
+.mobile-services{
+  display:none;
+}
+
+@media (max-width: 820px){
+  .mobile-cta{
+    display:block;
+    background:#fff;
+    padding:14px 0 10px;
+  }
+
+  .mobile-cta-btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    font-size:20px;
+    padding:14px 16px;
+    border-radius:16px;
+  }
+
+  .hero h1,
+  .hero-services,
+  .chips,
+  .hero-dog-label,
+  .hero .btn{
+    display:none !important;
+  }
+
+  .hero{
+    padding:0 !important;
+    min-height:auto !important;
+  }
+
+  .hero .container{
+    padding:0 !important;
+    max-width:none;
+    width:100%;
+  }
+
+  .hero::before{
+    position:relative;
+    display:block;
+    content:"";
+    width:100%;
+    min-height:420px;
+    background-image:var(--hero-image);
+    background-size:cover;
+    background-position:center;
+  }
+
+  .mobile-services{
+    display:block;
+    background:#fff;
+    padding:18px 0 28px;
+  }
+
+  .mobile-services .container{
+    width:min(var(--max), calc(100% - 2*var(--pad)));
+    margin:0 auto;
+  }
+
+  .mobile-services h2{
+    text-align:center;
+    margin:0 0 16px;
+    font-size:26px;
+  }
+
+  .mobile-service-card{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    font-weight:800;
+    font-size:18px;
+    margin:0 0 12px;
+    padding:14px 16px;
+    border-radius:16px;
+    border:1px solid rgba(57,255,20,.45);
+    background:linear-gradient(180deg, rgba(57,255,20,.18), rgba(57,255,20,.06));
+    color:var(--text);
+  }
+}
