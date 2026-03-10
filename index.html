@@ -66,8 +66,7 @@
       <div class="container">
         <h2>Contact</h2>
         <p class="muted">Fill this out and it will open an email draft (no backend needed
-     <form id="contactForm" class="form" name="contact" method="POST" data-netlify="true" action="/">
-  <input type="hidden" name="form-name" value="contact" />
+     <form id="contactForm" class="form">
           <div class="row">
             <label>
               Your name
@@ -215,7 +214,12 @@
             <input type="checkbox" name="gps" />
             Include GPS tracking updates
           </label>
-
+<div aria-hidden="true" style="position:absolute; left:-9999px;">
+  <label>
+    Leave this blank
+    <input type="text" name="website" tabindex="-1" autocomplete="off">
+  </label>
+</div>
           <button class="btn" type="submit">Send Request</button>
           </form>
           <p class="muted small">Tip: This is safe + simple. Later we can connect it to a real backend.</p>
@@ -223,6 +227,6 @@
     </section>
   </main>
 
-<!-- <script src="app.js"></script> -->
+<script src="app.js"></script>
 </body>
 </html>

@@ -101,11 +101,11 @@ h1{margin:0 0 10px; font-size:clamp(30px, 4.3vw, 52px); line-height:1.05;}
 }
 
 .hero-services-left{
-  bottom: -300px;
+  bottom: -120px;
 }
 
 .hero-services-right{
-  bottom: -400px;
+  bottom: -220px;
   right: auto;
 }
 
