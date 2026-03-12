@@ -8,6 +8,7 @@ if (contactForm) {
     const phone = contactForm.querySelector('[name="phone"]')?.value.trim() || '';
     const website = contactForm.querySelector('[name="website"]')?.value.trim() || '';
     const details = contactForm.querySelector('[name="notes"]')?.value.trim() || '';
+    const turnstileToken = contactForm.querySelector('[name="cf-turnstile-response"]')?.value || '';
 if (website) {
   alert('Blocked.');
   return;
@@ -20,6 +21,7 @@ if (website) {
       },
       body: JSON.stringify({
         startedAt: formLoadedAt,
+        turnstileToken,
         website,
         name,
         reply: email,
