@@ -1,5 +1,5 @@
 const contactForm = document.getElementById('contactForm');
-
+const formLoadedAt = Date.now();
 if (contactForm) {
   contactForm.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -19,6 +19,7 @@ if (website) {
     'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        startedAt: formLoadedAt,
         website,
         name,
         reply: email,
