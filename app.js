@@ -9,6 +9,14 @@ if (contactForm) {
     const website = contactForm.querySelector('[name="website"]')?.value.trim() || '';
     const details = contactForm.querySelector('[name="notes"]')?.value.trim() || '';
     const turnstileToken = contactForm.querySelector('[name="cf-turnstile-response"]')?.value || '';
+    const area = contactForm.querySelector('[name="area"]')?.value || '';
+const pref = contactForm.querySelector('[name="pref"]')?.value || '';
+const breed = contactForm.querySelector('[name="breed"]')?.value || '';
+const service = contactForm.querySelector('[name="service"]')?.value || '';
+const temperament = contactForm.querySelector('[name="temperament"]')?.value || '';
+const reactive = contactForm.querySelector('[name="reactive"]')?.value || '';
+const multidog = contactForm.querySelector('[name="multidog"]')?.value || '';
+const numDogs = contactForm.querySelector('[name="numDogs"]')?.value || '';
 if (website) {
   alert('Blocked.');
   return;
@@ -26,6 +34,14 @@ if (website) {
         name,
         reply: email,
         phone,
+        area,
+        pref,
+        breed,
+        service,
+        temperament,
+        reactive,
+        multidog,
+        numDogs,
         details
       })
     });
