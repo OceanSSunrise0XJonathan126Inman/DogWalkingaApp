@@ -221,6 +221,23 @@
   </label>
 </div>
 <div class="cf-turnstile" data-sitekey="0x4AAAAAACphv1clToYJJyb-"></div>
+<div class="pay-box">
+  <h3>Secure payment</h3>
+  <p class="muted small">Pay before sending your request. You will return here after checkout.</p>
+
+  <div class="pay-row">
+    <div>
+      <strong>Meet &amp; greet deposit</strong><br>
+      <span class="muted small">$20.00</span>
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    </div>
+    <button class="btn" type="button" id="payNowBtn">Pay with Stripe</button>
+  </div>
+
+  <p class="muted small" id="paymentStatus">Payment not started.</p>
+</div>
+
+<br>
 <br>
           <button class="btn" type="submit">Send Request</button>
           </form>
@@ -229,7 +246,11 @@
     </section>
   </main>
 
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="https://js.stripe.com/v3/"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="app.js"></script>
+<script>
+  window.STRIPE_PUBLISHABLE_KEY = 'pk_test_51TB5FhCOwxNFJ6rEBCvP1l8ccEqqb75dijTZaP9H23GewkHIqhQVN3tpKOdrpop1Nbic0k2zTsF2yyCSmPLMBSwM00NnyeuOkq';
+</script>
 </body>
 </html>
