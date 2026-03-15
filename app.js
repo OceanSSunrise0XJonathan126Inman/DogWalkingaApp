@@ -6,9 +6,29 @@ const paymentParams = new URLSearchParams(window.location.search);
 const returnedSessionId = paymentParams.get('session_id') || '';
 let paymentSessionId = returnedSessionId || sessionStorage.getItem('paymentSessionId') || '';
 let paymentComplete = !!paymentSessionId;
+const FORM_STORAGE_KEY = 'dogWalkingFormDraft';
 
 if (returnedSessionId) {
   sessionStorage.setItem('paymentSessionId', returnedSessionId);
+}
+
+function saveFormDraft(data) {
+  sessionStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(data));
+}
+
+function loadFormDraft() {
+  const raw = sessionStorage.getItem(FORM_STORAGE_KEY);
+  if (!raw) return null;
+
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+function clearFormDraft() {
+  sessionStorage.removeItem(FORM_STORAGE_KEY);
 }
 
 if (paymentParams.get('payment') === 'cancel') {
@@ -26,11 +46,41 @@ if (paymentStatus) {
 if (submitBtn) {
   submitBtn.disabled = !paymentComplete;
 }
+const contactForm = document.getElementById('contactForm');
+const savedDraft = loadFormDraft();
+
+if (contactForm && savedDraft) {
+  contactForm.querySelector('[name="name"]').value = savedDraft.name || '';
+  contactForm.querySelector('[name="reply"]').value = savedDraft.email || '';
+  contactForm.querySelector('[name="phone"]').value = savedDraft.phone || '';
+  contactForm.querySelector('[name="area"]').value = savedDraft.area || '';
+  contactForm.querySelector('[name="pref"]').value = savedDraft.pref || '';
+  contactForm.querySelector('[name="breed"]').value = savedDraft.breed || '';
+  contactForm.querySelector('[name="service"]').value = savedDraft.service || '';
+  contactForm.querySelector('[name="temperament"]').value = savedDraft.temperament || '';
+  contactForm.querySelector('[name="reactive"]').value = savedDraft.reactive || '';
+  contactForm.querySelector('[name="multidog"]').value = savedDraft.multidog || '';
+  contactForm.querySelector('[name="numDogs"]').value = savedDraft.numDogs || '';
+  contactForm.querySelector('[name="notes"]').value = savedDraft.details || '';
+}
 
 if (payNowBtn) {
   payNowBtn.addEventListener('click', async function () {
     if (paymentStatus) paymentStatus.textContent = 'Opening Stripe checkout...';
-
+    saveFormDraft({
+      name: contactForm?.querySelector('[name="name"]')?.value.trim() || '',
+      email: contactForm?.querySelector('[name="reply"]')?.value.trim() || '',
+      phone: contactForm?.querySelector('[name="phone"]')?.value.trim() || '',
+      area: contactForm?.querySelector('[name="area"]')?.value || '',
+      pref: contactForm?.querySelector('[name="pref"]')?.value || '',
+      breed: contactForm?.querySelector('[name="breed"]')?.value || '',
+      service: contactForm?.querySelector('[name="service"]')?.value || '',
+      temperament: contactForm?.querySelector('[name="temperament"]')?.value || '',
+      reactive: contactForm?.querySelector('[name="reactive"]')?.value || '',
+      multidog: contactForm?.querySelector('[name="multidog"]')?.value || '',
+      numDogs: contactForm?.querySelector('[name="numDogs"]')?.value || '',
+      details: contactForm?.querySelector('[name="notes"]')?.value.trim() || ''
+    });
     const response = await fetch('https://white-rain-5e87.doeslovekittys.workers.dev/create-checkout-session', {
       method: 'POST'
     });
@@ -45,7 +95,7 @@ if (payNowBtn) {
     window.location.href = result.url;
   });
 }
-const contactForm = document.getElementById('contactForm');
+
 const formLoadedAt = Date.now();
 if (contactForm) {
   contactForm.addEventListener('submit', async function (e) {
@@ -99,5 +149,19 @@ if (website) {
     });
 
     const result = await response.json()
+        if (!response.ok || !result.ok) {
+      alert(result.error || 'Error sending request.');
+      return;
+    }
+
+    clearFormDraft();
+    contactForm.reset();
+    sessionStorage.removeItem('paymentSessionId');
+    paymentSessionId = '';
+    paymentComplete = false;
+    if (submitBtn) submitBtn.disabled = true;
+    if (paymentStatus) paymentStatus.textContent = 'Payment required before sending request.';
+
+    alert('Request sent successfully.');
   });
 }
