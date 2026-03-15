@@ -3,16 +3,18 @@ const paymentStatus = document.getElementById('paymentStatus');
 const submitBtn = document.querySelector('#contactForm button[type="submit"]');
 
 const paymentParams = new URLSearchParams(window.location.search);
-let paymentComplete = sessionStorage.getItem('paymentComplete') === 'true';
+const returnedSessionId = paymentParams.get('session_id') || '';
+let paymentSessionId = returnedSessionId || sessionStorage.getItem('paymentSessionId') || '';
+let paymentComplete = !!paymentSessionId;
 
-if (paymentParams.get('payment') === 'success') {
-  paymentComplete = true;
-  sessionStorage.setItem('paymentComplete', 'true');
+if (returnedSessionId) {
+  sessionStorage.setItem('paymentSessionId', returnedSessionId);
 }
 
 if (paymentParams.get('payment') === 'cancel') {
   paymentComplete = false;
-  sessionStorage.removeItem('paymentComplete');
+  paymentSessionId = '';
+  sessionStorage.removeItem('paymentSessionId');
 }
 
 if (paymentStatus) {
@@ -79,6 +81,7 @@ if (website) {
       body: JSON.stringify({
         startedAt: formLoadedAt,
         turnstileToken,
+        paymentSessionId,
         website,
         name,
         reply: email,
