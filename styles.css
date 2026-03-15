@@ -325,3 +325,9 @@ input:focus, select:focus, textarea:focus{
     color:var(--text);
   }
 }
+button:disabled,
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
