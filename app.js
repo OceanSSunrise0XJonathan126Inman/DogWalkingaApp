@@ -12,6 +12,10 @@ if (returnedSessionId) {
   sessionStorage.setItem('paymentSessionId', returnedSessionId);
 }
 
+if (window.location.search.includes('name=') || window.location.search.includes('reply=')) {
+  window.history.replaceState({}, '', window.location.pathname);
+}
+
 function saveFormDraft(data) {
   sessionStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(data));
 }
