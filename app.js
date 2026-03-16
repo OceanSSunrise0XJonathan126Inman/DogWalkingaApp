@@ -12,7 +12,7 @@ if (returnedSessionId) {
   sessionStorage.setItem('paymentSessionId', returnedSessionId);
 }
 
-if (window.location.search.includes('name=') || window.location.search.includes('reply=')) {
+if (window.location.search.includes('name=') || window.location.search.includes('reply=') || window.location.search.includes('session_id=') || window.location.search.includes('payment=')) {
   window.history.replaceState({}, '', window.location.pathname);
 }
 
