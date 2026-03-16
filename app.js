@@ -12,7 +12,7 @@ if (returnedSessionId) {
   sessionStorage.setItem('paymentSessionId', returnedSessionId);
 }
 
-if (window.location.search.includes('name=') || window.location.search.includes('reply=') || window.location.search.includes('session_id=') || window.location.search.includes('payment=')) {
+if (window.location.search.includes('name=') || window.location.search.includes('reply=')) {
   window.history.replaceState({}, '', window.location.pathname);
 }
 
@@ -99,7 +99,8 @@ if (payNowBtn) {
   });
 }
 
-const formLoadedAt = Date.now();
+const formLoadedAt = Number(sessionStorage.getItem('formLoadedAt') || Date.now());
+sessionStorage.setItem('formLoadedAt', formLoadedAt);
 if (contactForm) {
   contactForm.addEventListener('submit', async function (e) {
     e.preventDefault();
