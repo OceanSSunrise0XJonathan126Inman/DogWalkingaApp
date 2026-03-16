@@ -52,7 +52,6 @@ const savedDraft = loadFormDraft();
 if (contactForm && savedDraft) {
   contactForm.querySelector('[name="name"]').value = savedDraft.name || '';
   contactForm.querySelector('[name="reply"]').value = savedDraft.email || '';
-  contactForm.querySelector('[name="phone"]').value = savedDraft.phone || '';
   contactForm.querySelector('[name="area"]').value = savedDraft.area || '';
   contactForm.querySelector('[name="pref"]').value = savedDraft.pref || '';
   contactForm.querySelector('[name="breed"]').value = savedDraft.breed || '';
