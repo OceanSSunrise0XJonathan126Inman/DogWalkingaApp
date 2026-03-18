@@ -68,6 +68,7 @@ if (contactForm && savedDraft) {
 }
 
 if (payNowBtn) {
+
   payNowBtn.addEventListener('click', async function () {
     if (paymentStatus) paymentStatus.textContent = 'Opening Stripe checkout...';
     saveFormDraft({
@@ -103,7 +104,7 @@ if (payNowBtn) {
 
     window.location.href = result.url;
   });
-
+}
 const formLoadedAt = Number(sessionStorage.getItem('formLoadedAt') || Date.now());
 sessionStorage.setItem('formLoadedAt', formLoadedAt);
 if (contactForm) {
