@@ -85,8 +85,14 @@ if (payNowBtn) {
       details: contactForm?.querySelector('[name="notes"]')?.value.trim() || ''
     });
     const response = await fetch('https://white-rain-5e87.doeslovekittys.workers.dev/create-checkout-session', {
-      method: 'POST'
-    });
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    startedAt: Date.now()
+  })
+});
 
     const result = await response.json();
 
@@ -97,7 +103,6 @@ if (payNowBtn) {
 
     window.location.href = result.url;
   });
-}
 
 const formLoadedAt = Number(sessionStorage.getItem('formLoadedAt') || Date.now());
 sessionStorage.setItem('formLoadedAt', formLoadedAt);
