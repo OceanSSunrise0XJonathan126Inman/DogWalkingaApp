@@ -117,7 +117,7 @@ if (contactForm) {
     const name = contactForm.querySelector('[name="name"]')?.value.trim() || '';
     const email = contactForm.querySelector('[name="reply"]')?.value.trim() || '';
     const phone = contactForm.querySelector('[name="phone"]')?.value.trim() || '';
-    const website = contactForm.querySelector('[name="website"]')?.value.trim() || '';
+    const website = contactForm.querySelector('[name="company"]')?.value.trim() || '';
     const details = contactForm.querySelector('[name="notes"]')?.value.trim() || '';
     const turnstileToken = contactForm.querySelector('[name="cf-turnstile-response"]')?.value || '';
     const area = contactForm.querySelector('[name="area"]')?.value || '';
