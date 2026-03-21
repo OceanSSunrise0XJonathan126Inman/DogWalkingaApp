@@ -171,6 +171,6 @@ if (website) {
     if (submitBtn) submitBtn.disabled = true;
     if (paymentStatus) paymentStatus.textContent = 'Payment required before sending request.';
 
-    alert('Request sent successfully.');
+    alert(`Request sent successfully. ID: ${result.requestId}`);
   });
 }
