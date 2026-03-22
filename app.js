@@ -10,7 +10,11 @@ const FORM_STORAGE_KEY = 'dogWalkingFormDraft';
 
 if (returnedSessionId) {
   sessionStorage.setItem('paymentSessionId', returnedSessionId);
-  setTimeout(() => window.scrollTo(0, payNowBtn.getBoundingClientRect().top + window.pageYOffset - 40), 300);
+setTimeout(() => {
+  const y = payNowBtn.getBoundingClientRect().top + window.pageYOffset - 40;
+  window.scrollTo(0, y);
+  setTimeout(() => window.scrollTo(0, y), 100);
+}, 400);
 }
 
 if (window.location.search.includes('name=') || window.location.search.includes('reply=')) {
