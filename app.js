@@ -10,6 +10,7 @@ const FORM_STORAGE_KEY = 'dogWalkingFormDraft';
 
 if (returnedSessionId) {
   sessionStorage.setItem('paymentSessionId', returnedSessionId);
+   window.location.hash = 'contact'; 
 }
 
 if (window.location.search.includes('name=') || window.location.search.includes('reply=')) {
