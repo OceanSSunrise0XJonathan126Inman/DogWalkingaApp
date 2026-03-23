@@ -1,7 +1,10 @@
 const payNowBtn = document.getElementById('payNowBtn');
 const paymentStatus = document.getElementById('paymentStatus');
 const submitBtn = document.querySelector('#contactForm button[type="submit"]');
-
+const submitSuccessMessage = document.getElementById('submitSuccessMessage');
+const confirmationCodeEl = document.getElementById('confirmationCode');
+if (submitSuccessMessage) submitSuccessMessage.hidden = true;
+if (confirmationCodeEl) confirmationCodeEl.textContent = '';
 const paymentParams = new URLSearchParams(window.location.search);
 const returnedSessionId = paymentParams.get('session_id') || '';
 let paymentSessionId = returnedSessionId || sessionStorage.getItem('paymentSessionId') || '';
@@ -55,6 +58,7 @@ if (paymentStatus) {
 
 if (submitBtn) {
   submitBtn.disabled = !paymentComplete;
+  if (!paymentComplete && submitSuccessMessage) submitSuccessMessage.hidden = true;
 }
 const contactForm = document.getElementById('contactForm');
 const savedDraft = loadFormDraft();
@@ -185,7 +189,11 @@ try {
     if (submitBtn) submitBtn.disabled = true;
     if (paymentStatus) paymentStatus.textContent = 'Payment required before sending request.';
 
-    alert(`Request sent successfully. ID: ${result.requestId}`);
+    const confirmationCode = (result.requestId || '').slice(0, 8).toUpperCase();
+if (confirmationCodeEl) confirmationCodeEl.textContent = confirmationCode;
+if (submitSuccessMessage) submitSuccessMessage.hidden = false;
+if (submitBtn) submitBtn.textContent = 'Sent';
+if (submitBtn) submitBtn.disabled = true;
 } catch (err) {
   submitLocked = false;
   alert('Error sending request.');
