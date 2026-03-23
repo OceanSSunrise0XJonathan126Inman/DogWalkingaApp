@@ -112,11 +112,17 @@ if (payNowBtn) {
 }
 const formLoadedAt = Number(sessionStorage.getItem('formLoadedAt') || Date.now());
 sessionStorage.setItem('formLoadedAt', formLoadedAt);
+let submitLocked = false;
 if (contactForm) {
   contactForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-    if (!paymentComplete) {
+    if (submitLocked) return;
+submitLocked = true;
+if (submitBtn) submitBtn.disabled = true;
+if (!paymentComplete) {
   alert('Please complete payment first.');
+  submitLocked = false;
+  if (submitBtn) submitBtn.disabled = false;
   return;
 }
     const name = contactForm.querySelector('[name="name"]')?.value.trim() || '';
@@ -137,7 +143,8 @@ if (website) {
   alert('Blocked.');
   return;
 }
-    
+
+try {
        const response = await fetch('https://white-rain-5e87.doeslovekittys.workers.dev/', {
       method: 'POST',
       headers: {
@@ -165,6 +172,7 @@ if (website) {
 
     const result = await response.json()
         if (!response.ok || !result.ok) {
+        submitLocked = false;  
       alert(result.error || 'Error sending request.');
       return;
     }
@@ -178,5 +186,8 @@ if (website) {
     if (paymentStatus) paymentStatus.textContent = 'Payment required before sending request.';
 
     alert(`Request sent successfully. ID: ${result.requestId}`);
-  });
+} catch (err) {
+  submitLocked = false;
+  alert('Error sending request.');
 }
+});
