@@ -10,6 +10,7 @@ const FORM_STORAGE_KEY = 'dogWalkingFormDraft';
 
 if (returnedSessionId) {
   sessionStorage.setItem('paymentSessionId', returnedSessionId);
+  window.history.replaceState({}, '', window.location.pathname);
 setTimeout(() => {
   const y = payNowBtn.getBoundingClientRect().top + window.pageYOffset - 40;
   window.scrollTo(0, y);
