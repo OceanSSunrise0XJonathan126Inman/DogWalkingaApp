@@ -117,12 +117,19 @@ if (payNowBtn) {
 const formLoadedAt = Number(sessionStorage.getItem('formLoadedAt') || Date.now());
 sessionStorage.setItem('formLoadedAt', formLoadedAt);
 let submitLocked = false;
+const termsAgree = document.getElementById('termsAgree');
 if (contactForm) {
   contactForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     if (submitLocked) return;
 submitLocked = true;
 if (submitBtn) submitBtn.disabled = true;
+if (!termsAgree || !termsAgree.checked) {
+  alert('Please agree to the Terms of Service.');
+  submitLocked = false;
+  if (submitBtn) submitBtn.disabled = false;
+  return;
+}
 if (!paymentComplete) {
   alert('Please complete payment first.');
   submitLocked = false;
